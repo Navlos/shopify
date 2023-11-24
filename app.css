@@ -1,0 +1,264 @@
+:root{
+    --clr-grey-50:#656266;
+    --clr-grey-100:#616161;
+    --clr-grey-200:#322f33;
+    --clr-grey-300:#1c181d;
+
+
+    --grey-100: #e3e3e3;
+    --grey-200:#616161;
+    --grey-300:#475467;
+
+    --blue:#005bd3;
+    --green: #36FBA1;
+   --white:#ffffff;
+   --black:#00000066;
+   --grey:#f1f1f1;
+
+
+    --fw-regular: 400;
+    --fw-semi-bold:500;
+    --fw--bold:600;
+
+    --fs-200:0.7500em;
+    --fs-300:0.8125em;
+    --fs-400:0.875em;
+
+
+    --fs-body: var(--fs-300);
+    --fs-nav:var(--fs-200);
+    --fs-button:var(--fs-200);
+
+    --ff-body:'Inter', sans-seriff;
+
+
+}
+
+
+
+/*  -------------------- Utility Classes ------------------- */ 
+.fw-bold{
+    font-weight: var(--fw--bold);
+}
+
+.fw-semi-bold{
+    font-weight: var(--fw-semi-bold);
+}
+
+.fw-regular{
+    font-weight: var(--fw-regular);
+}
+
+
+.fs-200{
+    font-size: var(--fs-200);
+}
+.fs-300{
+    font-size: var(--fs-300);
+}
+.fs-400{
+    font-size: var(--fs-400);
+}
+
+
+
+
+
+
+/*  ----General ----- */
+
+
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+ font-family:var(--ff-body) ;
+ background-color:var(--grey)
+}
+
+
+
+a{
+    text-decoration: none;
+}
+
+button{
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.flexed{
+    display: flex;
+    align-items: center;
+    
+}
+
+@media (min-width: 768px) {
+    .flexed{
+    gap: .5em;
+    
+}
+}
+
+
+
+.container{
+  width: 95%;
+  margin: auto;
+ 
+}
+
+/* -------------- Header ------------ */
+
+.primary-header{
+
+  background-color:var(--clr-grey-300);
+   padding: 0.753em .5em;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+
+/* ------------ Input field ----------------- */
+
+input{
+    background: none;
+    border: none;
+    outline: none;
+    font-weight: var(--fw-semi-bold);
+    font-size: var(--fs-300);
+    color: var(--white);
+    padding:0 4px ;
+}
+
+
+.search-container{
+    background-color: var(--clr-grey-200);
+    padding: 8px;
+    border: 1px solid var(--clr-grey-50);
+    border-radius: 8px;
+    display: flex;
+}
+
+.user-profile{
+    background-color:var(--clr-grey-200);
+    color: var;
+    font-size: var(--fs-200);
+    padding: 8px;
+    gap:1em;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+
+}
+
+.user-profile .name{
+    color: var(--white);
+}
+
+
+.user-profile .id{
+    background-color: var(--green);
+    padding: 8px;
+    border-radius: 8px;
+}
+@media (min-width: 768px) {
+    input{
+        width: 420px;
+        
+        
+    }
+
+    .notification-icon{
+        background-color:var(--clr-grey-200);
+        padding: 8px;
+        border-radius: 8px;
+    }
+}
+
+@media (max-width:768px){
+    .user-profile{
+        background:none;
+    }
+
+    .name{
+        display: none;
+           
+}
+}
+
+
+/* --------------- PLAN NOTIFICATION ---------------- */
+.plan-notification{
+    position: relative;
+    background-color: var(--clr-grey-300);
+    margin-top: 2em;
+    color: var(--white);
+    font-size: var(--fs-300);
+    padding: 20px
+}
+
+.select-plan-link{
+    color: var(--clr-grey-300);
+    background-color: var(--white);
+    padding: 6px 12px ;
+    border-radius: 6px;
+    cursor: pointer;
+
+}
+
+.flex p{
+    line-height: 1.5em;
+    margin-bottom:1em;
+}
+.absolute-btn{
+  position: absolute;
+  top:10px ;
+  right: 10px;
+  cursor: pointer;
+}
+
+
+@media (min-width: 768px) {
+    
+    .plan-notification{
+        width: 800px;
+        margin: auto;
+        margin-top: 2em;
+        border-radius: 8px;
+    }
+
+    .flex{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .select-plan-link{
+        margin-right: 2em;
+    }
+
+    .cancel-btn{
+        top:30%;
+}
+
+}
+
+
+
+/* --------------- SETUP GUIDE -------------------- */
+.setup-guide{
+    position: relative;
+    background-color: var(--white);
+    padding:20px;
+    margin-top: 1em;
+}
+
+.setup-guide p{
+    margin-top: .5em;
+    line-height: 18px;
+}
