@@ -76,7 +76,8 @@
 
 body{
  font-family:var(--ff-body) ;
- background-color:var(--grey)
+ background-color:var(--grey);
+ 
 }
 
 
@@ -127,6 +128,7 @@ button{
 /* ------------ Input field ----------------- */
 
 input{
+    width: 20%;
     background: none;
     border: none;
     outline: none;
@@ -162,7 +164,7 @@ input{
 }
 
 
-.user-profile .id{
+.user-profile .user-id{
     background-color: var(--green);
     padding: 8px;
     border-radius: 8px;
