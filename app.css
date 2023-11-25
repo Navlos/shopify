@@ -98,6 +98,10 @@ button{
     
 }
 
+.visible{
+    display: block;
+}
+
 @media (min-width: 768px) {
     .flexed{
     gap: .5em;
@@ -111,6 +115,17 @@ button{
   width: 95%;
   margin: auto;
  
+}
+
+.setup-btn{
+    background-color: #404040;
+    padding:6px 12px;
+    cursor: pointer;
+    color: #F6F3F6;
+    border-radius: 6px;
+    font-size: var(--fs-200);
+
+    
 }
 
 /* -------------- Header ------------ */
@@ -128,7 +143,7 @@ button{
 /* ------------ Input field ----------------- */
 
 input{
-    width: 20%;
+    width:238px;
     background: none;
     border: none;
     outline: none;
@@ -195,6 +210,39 @@ input{
 }
 
 
+/* --------------NOTIFICATION ALERT ------------------ */
+.notification{
+    width: 383px;
+    
+    background-color: var(--white);
+    padding: 16px;
+    border-radius: 14px;
+    position: absolute;
+    top: 85px;
+    right: 16px;
+    z-index: 10000000000000000;
+    border: 1px solid var(--grey);
+    display: none;
+}
+
+.notification-header{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+
+
+.notification-text{
+    text-align: center;
+    background-color: var(--grey);
+    padding: 16px;
+    line-height: 18.2px;
+    letter-spacing: .6px;
+
+}
+
+
 /* --------------- PLAN NOTIFICATION ---------------- */
 .plan-notification{
     position: relative;
@@ -206,6 +254,7 @@ input{
 }
 
 .select-plan-link{
+    /* width: 20%; */
     color: var(--clr-grey-300);
     background-color: var(--white);
     padding: 6px 12px ;
@@ -260,7 +309,101 @@ input{
     margin-top: 1em;
 }
 
+
+@media (min-width: 768px){
+    .setup-guide{
+        width: 800px;
+        margin: auto;
+        margin-top: 1em;
+
+    }
+
+    .instruction{
+        background-color: var(--grey);
+        padding: 8px 8px 12px  8px;
+        border-radius: 10px;
+    }
+
+    .instruction-info{
+        display: flex;
+        justify-content: space-between;
+        
+        
+    }
+}
+
 .setup-guide p{
     margin-top: .5em;
     line-height: 18px;
 }
+
+
+/* -------------- SETUP INSTRUCTIONS -----------------*/
+
+.setup-instructions {
+    
+    margin-top: 2em;
+    
+}
+
+
+.instruction{
+    display: flex;
+    gap: .5em;
+    margin-bottom: 2em;
+    line-height:2.5em ;
+
+
+    
+
+}
+
+.instruction-info p{
+    margin-bottom: 1em;
+}
+
+
+.setup-links{
+    
+    gap: 3em;
+}
+
+.setup-links .colored{
+    color: black;
+}
+
+
+
+
+
+@media (max-width: 768px) {
+    .info-image{
+        display: none;
+        font-weight: 600;
+    }
+}
+
+
+/* Visually hide the checkbox */
+input[type="checkbox"] {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+  }
+
+  /* Style the label as the container for the SVG */
+  label {
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  /* Style the SVG within the label */
+  #iconContainer svg {
+    width: 40px;
+    height: 40px;
+  }
+
+
+  .checkbox-svg{
+    color: red;
+  }
