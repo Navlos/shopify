@@ -84,57 +84,76 @@ arrowBtn.addEventListener("click", () => {
 } )
 
 
+// FUNCTION TO HANDLE CHECKBOx CLICK
 
 
+// Constants for CSS classes
+const HIDDEN_CLASS = "hidden"; // CSS class to hide an element
+const MARKED_AS_DONE_CLASS = 'checkbox-done'; // CSS class to style the checkbox as completed
 
+// DOM elements - Use querySelectorAll to select all elements with the specified class
+const checkBoxButtons = document.querySelectorAll('.shopping-item-checkbox');
+const notCompletedIcons = document.querySelectorAll(".not-completed-icon");
+const completedIcons = document.querySelectorAll(".completed-icon");
+const spinnerIcons = document.querySelectorAll(".spinner-icon");
 
+// Function to handle marking the checkbox as done
+function handleMarkAsDone(buttonIndex) {
+  notCompletedIcons[buttonIndex].classList.add(HIDDEN_CLASS); // Hide the not completed icon
+  spinnerIcons[buttonIndex].classList.remove(HIDDEN_CLASS); // Show the loading spinner
 
+  setTimeout(() => {
+    spinnerIcons[buttonIndex].classList.add(HIDDEN_CLASS); // Hide the loading spinner
+    completedIcons[buttonIndex].classList.remove(HIDDEN_CLASS); // Show the completed icon
+    checkBoxButtons[buttonIndex].classList.add(MARKED_AS_DONE_CLASS); // Apply completed styling to the checkbox
+  }, 300);
+}
 
+// Function to handle marking the checkbox as not done
+function handleMarkAsNotDone(buttonIndex) {
+  completedIcons[buttonIndex].classList.add(HIDDEN_CLASS); // Hide the completed icon
+  spinnerIcons[buttonIndex].classList.remove(HIDDEN_CLASS); // Show the loading spinner
 
+  setTimeout(() => {
+    spinnerIcons[buttonIndex].classList.add(HIDDEN_CLASS); // Hide the loading spinner
+    notCompletedIcons[buttonIndex].classList.remove(HIDDEN_CLASS); // Show the not completed icon
+    checkBoxButtons[buttonIndex].classList.remove(MARKED_AS_DONE_CLASS); // Remove completed styling from the checkbox
+  }, 300);
+}
 
+// Function to handle the click event on the checkbox
+function handleDoneOrNotDone(event) {
+  const buttonIndex = Array.from(checkBoxButtons).indexOf(event.currentTarget);
+  const markedAsDone = checkBoxButtons[buttonIndex].classList.contains(MARKED_AS_DONE_CLASS);
 
-
-
-const checkbox = document.getElementById('myCheckbox');
-const iconContainer = document.getElementById('iconContainer');
-const checkboxLabel = document.getElementById('checkboxLabel');
-
-function updateSVG() {
-  iconContainer.innerHTML = ''; // Clear previous SVG content
-
-  if (checkbox.checked) {
-    // Show the spinner SVG first
-    const spinnerSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    spinnerSVG.innerHTML = `<image xlink:href="https://crushingit.tech/hackathon-assets/icon-spinner.svg" />`;
-    iconContainer.appendChild(spinnerSVG);
-
-    setTimeout(() => {
-      // Show checkmark SVG when processing is complete
-      const checkedSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-      checkedSVG.innerHTML = `<image xlink:href="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg" />`;
-      iconContainer.innerHTML = ''; // Clear spinner
-      iconContainer.appendChild(checkedSVG);
-
-      // Add a click event listener to the checkmarkSVG
-      checkedSVG.addEventListener('click', () => {
-        console.log('checked');
-      });
-    }, 100);
+  // Call the appropriate function based on the current state
+  if (markedAsDone) {
+    handleMarkAsNotDone(buttonIndex);
   } else {
-    // Show initial SVG when checkbox is not checked
-    const initialSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    initialSVG.innerHTML = `<circle cx="16" cy="16" r="12" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6" />`;
-    iconContainer.appendChild(initialSVG);
+    handleMarkAsDone(buttonIndex);
   }
 }
 
-// Attach the updateSVG function to the change event of the checkbox
-checkbox.addEventListener('change', updateSVG);
-
-// Call the updateSVG function initially to set the initial state
-updateSVG();
-
+// Add a click event listener to each checkbox
+checkBoxButtons.forEach((button) => {
+  button.addEventListener("click", handleDoneOrNotDone);
+});
 
 
 
+function toggleContent(element) {
+  const infoDiv = element.querySelector('.instruction-info');
+  const allInfoDivs = document.querySelectorAll('.instruction-info');
 
+  allInfoDivs.forEach(div => {
+    if (div !== infoDiv) {
+      div.style.display = 'none';
+    }
+  });
+
+  if (infoDiv.style.display === 'none' || infoDiv.style.display === '') {
+    infoDiv.style.display = 'block';
+  } else {
+    infoDiv.style.display = 'none';
+  }
+}
