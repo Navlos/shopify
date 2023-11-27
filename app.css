@@ -400,6 +400,7 @@ input{
     margin-bottom: 1em;
     color: var(--clr-grey-100);
     font-weight: 500;
+    line-height: 19.6px;
 }
 
 .instruction-info p a {
