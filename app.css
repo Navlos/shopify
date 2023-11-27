@@ -124,6 +124,8 @@ button{
     color: #F6F3F6;
     border-radius: 6px;
     font-size: var(--fs-200);
+    outline:red;
+
 
     
 }
@@ -309,6 +311,13 @@ input{
     margin-top: 1em;
 }
 
+.instruction{
+    background-color: var(--grey);
+    padding: 8px 8px 12px  8px;
+    border-radius: 10px;
+}
+
+
 
 @media (min-width: 768px){
     .setup-guide{
@@ -318,13 +327,11 @@ input{
 
     }
 
-    .instruction{
-        background-color: var(--grey);
-        padding: 8px 8px 12px  8px;
-        border-radius: 10px;
-    }
-
+    
     .instruction-info{
+        width: 100%;
+        
+        gap: 3em;
         display: flex;
         justify-content: space-between;
         
@@ -351,7 +358,7 @@ input{
     height: 4px;
     border-radius:28px;
     overflow: hidden;
- background-color:#E3E3E3;
+ background-color:var(--grey-100);
   }
 
   #progress-bar {
@@ -378,6 +385,7 @@ input{
 
 .instruction{
     display: flex;
+    justify-content: space-between;
     gap: .5em;
     margin-bottom: 2em;
     line-height:2.5em ;
@@ -389,16 +397,27 @@ input{
 
 .instruction-info p{
     margin-bottom: 1em;
+    color: var(--clr-grey-100);
+    font-weight: 500;
+}
+
+.instruction-info p a {
+    color: #005BD3;
+    font-size: 14px;
+    font-weight: 500
 }
 
 
 .setup-links{
-    
-    gap: 3em;
+    width: ;
+    ;
 }
 
 .setup-links .colored{
     color: black;
+    padding: 6px 12px;
+    margin-left:8px;
+
 }
 
 
@@ -410,19 +429,15 @@ input{
 .shopping-item-checkbox{
     background:transparent;
     border:none;
-    border-radius:12px;
-    
-    width: 20px;
-    justify-content:center;
-    align-items:center;
     cursor:pointer;
-    
+    width: 100%;
+    margin-top: 10px;
     transition:all 100ms ease-in
   }
   
   .shopping-item-checkbox:focus{
     
-    outline-offset:4px;
+    
   }
   
   .hidden{
