@@ -338,6 +338,35 @@ input{
 }
 
 
+/* -------------- PROGRESS BAR ----------------------- */
+.progress-bar-counter{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin-top: 2em;
+}
+
+#progress-container {
+    width: 72px;
+    height: 4px;
+    border-radius:28px;
+    overflow: hidden;
+ background-color:#E3E3E3;
+  }
+
+  #progress-bar {
+    width:0;
+    height:4px;
+    background-color:#1A1A1A;
+    transition: width 0.3s ease-in-out;
+  }
+
+  #counter {
+    
+  }
+
+
+
 /* -------------- SETUP INSTRUCTIONS -----------------*/
 
 .setup-instructions {
@@ -508,3 +537,16 @@ input{
 
 
 
+
+  /* -------------- STATUS BAR ---------- */
+
+  .status-bar{
+    width:50%;
+
+  }
+
+  .status-bar span{
+    width: 4em;
+    height: 2em;
+    border:1px solid black;
+  }

@@ -105,7 +105,11 @@ function handleMarkAsDone(buttonIndex) {
   setTimeout(() => {
     spinnerIcons[buttonIndex].classList.add(HIDDEN_CLASS); // Hide the loading spinner
     completedIcons[buttonIndex].classList.remove(HIDDEN_CLASS); // Show the completed icon
-    checkBoxButtons[buttonIndex].classList.add(MARKED_AS_DONE_CLASS); // Apply completed styling to the checkbox
+    checkBoxButtons[buttonIndex].classList.add(MARKED_AS_DONE_CLASS); 
+
+    // Increase the progress bar
+    increaseProgressBar();
+
   }, 300);
 }
 
@@ -117,7 +121,13 @@ function handleMarkAsNotDone(buttonIndex) {
   setTimeout(() => {
     spinnerIcons[buttonIndex].classList.add(HIDDEN_CLASS); // Hide the loading spinner
     notCompletedIcons[buttonIndex].classList.remove(HIDDEN_CLASS); // Show the not completed icon
-    checkBoxButtons[buttonIndex].classList.remove(MARKED_AS_DONE_CLASS); // Remove completed styling from the checkbox
+    checkBoxButtons[buttonIndex].classList.remove(MARKED_AS_DONE_CLASS); 
+
+    // reduce the progress bar
+    reduceProgressBar();
+
+
+
   }, 300);
 }
 
@@ -141,19 +151,77 @@ checkBoxButtons.forEach((button) => {
 
 
 
-function toggleContent(element) {
-  const infoDiv = element.querySelector('.instruction-info');
-  const allInfoDivs = document.querySelectorAll('.instruction-info');
+// FUNCTION TO INCREASE THE PROGRESS BAR
 
-  allInfoDivs.forEach(div => {
-    if (div !== infoDiv) {
-      div.style.display = 'none';
+
+
+// Initialize variables
+
+let loadProgressBar = 0;  
+let counterNum = 0;  
+
+function increaseProgressBar() {
+  // Check if the maximum progress updates (5) have been reached
+  if (counterNum >= 5) {
+
+    return;
+
+  } 
+  else {
+
+    // Increase the progress and counter
+    loadProgressBar += 20;
+    counterNum += 1;
+
+    // Update the width of the progress bar
+
+    document.getElementById('progress-bar').style.width = `${loadProgressBar}%`;
+
+    // Update the counter display
+
+    document.getElementById('counter').textContent = counterNum;
+
+    // Adjust the border radius based on the progress value
+
+    if (loadProgressBar === 100) {
+      document.getElementById('progress-bar').style.borderRadius = '100px';
+    } else {
+      document.getElementById('progress-bar').style.borderTopLeftRadius = '100px';
+      document.getElementById('progress-bar').style.borderBottomLeftRadius = '100px';
+      document.getElementById('progress-bar').style.borderTopRightRadius = '';
+      document.getElementById('progress-bar').style.borderBottomRightRadius = '';
     }
-  });
-
-  if (infoDiv.style.display === 'none' || infoDiv.style.display === '') {
-    infoDiv.style.display = 'block';
-  } else {
-    infoDiv.style.display = 'none';
   }
+}
+
+
+
+
+// FUNCTION TO REDUCE THE PROGRESS BAR
+
+function reduceProgressBar() {
+  // Check if the progress is already at 0, then return
+  if (loadProgressBar === 0) {
+    return; // Exit the function if the progress is already at the minimum
+  }
+
+  // Decrease progress
+  loadProgressBar -= 20;
+
+  // Adjust border radius based on the updated progress value
+  if (loadProgressBar === 100) {
+    document.getElementById('progress-bar').style.borderRadius = '100px';
+  } else {
+    document.getElementById('progress-bar').style.borderTopLeftRadius = '100px';
+    document.getElementById('progress-bar').style.borderBottomLeftRadius = '100px';
+    document.getElementById('progress-bar').style.borderTopRightRadius = '';
+    document.getElementById('progress-bar').style.borderBottomRightRadius = '';
+  }
+
+  // Update the width of the progress bar
+  document.getElementById('progress-bar').style.width = `${loadProgressBar}%`;
+
+  // Update the counter, ensuring it doesn't go below 0
+  counterNum = Math.max(0, counterNum - 1);
+  document.getElementById('counter').textContent = counterNum;
 }
