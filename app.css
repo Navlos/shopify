@@ -65,7 +65,7 @@
 
 
 
-/*  ----General ----- */
+/*  ------------------ General -------------- */
 
 
 
@@ -80,6 +80,9 @@ body{
  
 }
 
+.visually-hidden{
+    display: none;
+}
 
 
 a{
