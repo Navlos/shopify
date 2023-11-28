@@ -106,7 +106,7 @@ function handleMarkAsDone(buttonIndex) {
   spinnerIcons[buttonIndex].classList.remove(HIDDEN_CLASS); 
 
   // set the checkbox status for screen readers
-  const newLocal = checkboxButtonStatus.arialLabel = "Loading, please wait ...... ";
+  const newLocal = checkboxButtonStatus.ariaLabel = "Loading, please wait ...... ";
 
   setTimeout(() => {
     spinnerIcons[buttonIndex].classList.add(HIDDEN_CLASS); // Hide the loading spinner
@@ -115,12 +115,12 @@ function handleMarkAsDone(buttonIndex) {
 
 
     // set the checkbox status to complete for screen readers
-    checkboxButtonStatus.arialLabel = "Successfully marked as done " ;
+    checkboxButtonStatus.ariaLabel = "Successfully marked as done " ;
     
 
 
-   // Change the arial label to mark as not done
-   checkBoxButtons.arialLabel = checkBoxButtons.arialLabel.replace(" as done", "as not done")
+   // Change the aria label to mark as not done
+   checkBoxButtons.ariaLabel = checkBoxButtons.ariaLabel.replace(" as done", "as not done")
 
     // Increase the progress bar
     increaseProgressBar();
@@ -140,7 +140,7 @@ function handleMarkAsNotDone(buttonIndex) {
   spinnerIcons[buttonIndex].classList.remove(HIDDEN_CLASS); 
 
   // set the checkbox status for screen readers
-  const newLocal = checkboxButtonStatus.arialLabel = "Loading, please wait ...... ";
+  const newLocal = checkboxButtonStatus.ariaLabel = "Loading, please wait ...... ";
 
   setTimeout(() => {
     spinnerIcons[buttonIndex].classList.add(HIDDEN_CLASS); // Hide the loading spinner
@@ -148,10 +148,10 @@ function handleMarkAsNotDone(buttonIndex) {
     checkBoxButtons[buttonIndex].classList.remove(MARKED_AS_DONE_CLASS); 
 
     // set the checkbox status to complete for screen readers
-    checkboxButtonStatus.arialLabel = "Successfully marked as not done " ;
+    checkboxButtonStatus.ariaLabel = "Successfully marked as not done " ;
 
-    // Change the arial label to mark as done
-    checkBoxButtons.arialLabel = checkBoxButtons.arialLabel.replace(" as not done", "as done");
+    // Change the aria label to mark as done
+    checkBoxButtons.ariaLabel = checkBoxButtons.ariaLabel.replace(" as not done", "as done");
 
     // reduce the progress bar
     reduceProgressBar();
