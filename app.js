@@ -86,52 +86,86 @@ arrowBtn.addEventListener("click", () => {
 
 // FUNCTION TO HANDLE CHECKBOx CLICK
 
-
-// Constants for CSS classes
 const HIDDEN_CLASS = "hidden"; // CSS class to hide an element
-const MARKED_AS_DONE_CLASS = 'checkbox-done'; // CSS class to style the checkbox as completed
+const MARKED_AS_DONE_CLASS = 'checkbox-done'; 
 
-// DOM elements - Use querySelectorAll to select all elements with the specified class
 const checkBoxButtons = document.querySelectorAll('.shopping-item-checkbox');
 const notCompletedIcons = document.querySelectorAll(".not-completed-icon");
 const completedIcons = document.querySelectorAll(".completed-icon");
 const spinnerIcons = document.querySelectorAll(".spinner-icon");
+const checkboxButtonStatus = document.querySelectorAll('.checkbox-status')
 
-// Function to handle marking the checkbox as done
+// FUNCTION TO HANDLE MARKING THE CHECKBOX AS DONE
+
 function handleMarkAsDone(buttonIndex) {
-  notCompletedIcons[buttonIndex].classList.add(HIDDEN_CLASS); // Hide the not completed icon
-  spinnerIcons[buttonIndex].classList.remove(HIDDEN_CLASS); // Show the loading spinner
+
+  // Hide the not completed icon
+  notCompletedIcons[buttonIndex].classList.add(HIDDEN_CLASS); 
+
+ // Show the loading spinner
+  spinnerIcons[buttonIndex].classList.remove(HIDDEN_CLASS); 
+
+  // set the checkbox status for screen readers
+  const newLocal = checkboxButtonStatus.arialLabel = "Loading, please wait ...... ";
 
   setTimeout(() => {
     spinnerIcons[buttonIndex].classList.add(HIDDEN_CLASS); // Hide the loading spinner
     completedIcons[buttonIndex].classList.remove(HIDDEN_CLASS); // Show the completed icon
     checkBoxButtons[buttonIndex].classList.add(MARKED_AS_DONE_CLASS); 
 
+
+    // set the checkbox status to complete for screen readers
+    checkboxButtonStatus.arialLabel = "Successfully marked as done " ;
+    
+
+
+   // Change the arial label to mark as not done
+   checkBoxButtons.arialLabel = checkBoxButtons.arialLabel.replace(" as done", "as not done")
+
     // Increase the progress bar
     increaseProgressBar();
 
-  }, 300);
+  }, 500);
 }
 
-// Function to handle marking the checkbox as not done
+
+// FUNCTION TO HANDLE MARKING THE CHECKBOX AS NOT DONE
+
 function handleMarkAsNotDone(buttonIndex) {
-  completedIcons[buttonIndex].classList.add(HIDDEN_CLASS); // Hide the completed icon
-  spinnerIcons[buttonIndex].classList.remove(HIDDEN_CLASS); // Show the loading spinner
+
+  // Hide the completed icon
+  completedIcons[buttonIndex].classList.add(HIDDEN_CLASS); 
+
+  // Show the loading spinner
+  spinnerIcons[buttonIndex].classList.remove(HIDDEN_CLASS); 
+
+  // set the checkbox status for screen readers
+  const newLocal = checkboxButtonStatus.arialLabel = "Loading, please wait ...... ";
 
   setTimeout(() => {
     spinnerIcons[buttonIndex].classList.add(HIDDEN_CLASS); // Hide the loading spinner
     notCompletedIcons[buttonIndex].classList.remove(HIDDEN_CLASS); // Show the not completed icon
     checkBoxButtons[buttonIndex].classList.remove(MARKED_AS_DONE_CLASS); 
 
+    // set the checkbox status to complete for screen readers
+    checkboxButtonStatus.arialLabel = "Successfully marked as not done " ;
+
+    // Change the arial label to mark as done
+    checkBoxButtons.arialLabel = checkBoxButtons.arialLabel.replace(" as not done", "as done");
+
     // reduce the progress bar
     reduceProgressBar();
 
 
 
-  }, 300);
+  }, 500);
 }
 
-// Function to handle the click event on the checkbox
+
+
+// FUNCTION TO HANDLE THE CLICK EVENTS ON THE CHECKBOX
+
+
 function handleDoneOrNotDone(event) {
   const buttonIndex = Array.from(checkBoxButtons).indexOf(event.currentTarget);
   const markedAsDone = checkBoxButtons[buttonIndex].classList.contains(MARKED_AS_DONE_CLASS);
@@ -153,15 +187,10 @@ checkBoxButtons.forEach((button) => {
 
 // FUNCTION TO INCREASE THE PROGRESS BAR
 
-
-
-// Initialize variables
-
 let loadProgressBar = 0;  
 let counterNum = 0;  
 
 function increaseProgressBar() {
-  // Check if the maximum progress updates (5) have been reached
   if (counterNum >= 5) {
 
     return;
